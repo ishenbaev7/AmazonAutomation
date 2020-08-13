@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Purchasing Test: Books" verbose="1" preserve-order="true" parallel="classes" thread-count="5">
+    <test name="Verify product price on Shopping Cart Review page | HITCHHIKERS_GUIDE" preserve-order="true">
+        <parameter name="testBook" value="HITCHHIKERS_GUIDE"/>
+        <classes>
+            <class name="PurchaseOrderTest" />
+        </classes>
+    </test>
+    <test name="Verify product price on Shopping Cart Review page | THE_HOBBIT" preserve-order="true">
+        <parameter name="testBook" value="THE_HOBBIT"/>
+        <classes>
+            <class name="PurchaseOrderTest" />
+        </classes>
+    </test>
+</suite>
