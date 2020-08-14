@@ -1,12 +1,13 @@
+import actions.OrderActions;
 import base.LoadProperties;
 import enums.Products;
 import org.openqa.selenium.WebDriver;
-import actions.*;
-import org.testng.annotations.*;
-import pages.ShoppingCartReviewPage;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 import pojo.Book;
+import utils.DetectOS;
 import utils.DriverUtils;
-import static org.testng.Assert.assertEquals;
 
 public class PurchaseOrderTest {
 
@@ -14,8 +15,12 @@ public class PurchaseOrderTest {
 
     @BeforeClass
     public void setUp(){
+        if (DetectOS.isMac())
         System.setProperty("webdriver.chrome.driver",
-                "drivers\\chromedriver.exe");
+                "drivers//mac//chromedriver");
+        else
+            System.setProperty("webdriver.chrome.driver",
+                    "drivers//win//chromedriver.exe");
         driver = DriverUtils.getDriver();
         driver.manage().window().maximize();
     }
