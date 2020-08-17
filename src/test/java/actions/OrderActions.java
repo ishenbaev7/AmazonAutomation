@@ -1,8 +1,10 @@
 package actions;
 
-import enums.Products;
+import enums.Books;
 import pages.*;
 import pojo.Book;
+import pojo.Product;
+
 public class OrderActions {
 
     public void navigateToHomePage(){
@@ -21,18 +23,18 @@ public class OrderActions {
         signIn.clickSignInButton();
     }
 
-    public Book loadProductPageDataIntoProductObject(Products product){
-        System.out.println("Starting process to load info for " + product + ":");
+    public Book loadProductPageDataIntoBookObject(Books book_enum){
+        System.out.println("Starting process to load info for " + book_enum + ":");
         Book book = new Book();
         ProductPage productPage = new ProductPage();
-        productPage.navigateToProductPage(product);
-        productPage.verifyProductTitle(product.getProductTitle());
+        productPage.navigateToProductPage(book_enum);
+        productPage.verifyProductTitle(book.getProductTitle());
         book.loadInfoFromProductPage();
         System.out.println(book + "\n");
         return book;
     }
 
-    public void addProductToShoppingCartReview(Products product){
+    public void addProductToShoppingCartReview(Books product){
         ShoppingCartReviewPage shoppingCartReviewPage = new ShoppingCartReviewPage();
         System.out.println("Adding " + product + " to cart:");
         ProductPage productPage = new ProductPage();
@@ -42,7 +44,7 @@ public class OrderActions {
         shoppingCartReviewPage.verifyOnShoppingCartReviewPage();
     }
 
-    public Book loadShoppingCartDataIntoProductObject(Products product){
+    public Book loadShoppingCartDataIntoProductObject(Books product){
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
         Book book = new Book();
         shoppingCartPage.verifyOnShoppingCartPage();
@@ -77,13 +79,6 @@ public class OrderActions {
         }
     }
 
-    /**
-     * Compares actual and expected values, and sets up the results in one line item.
-     * @param fieldName: What you are comparing, such as "unitPrice".
-     * @param actualValue: The value you wish to compare.
-     * @param expectedValue: The value you hope the actual value will be.
-     * @return
-     */
     private String outputPassOrFailOnFieldComparison(String fieldName, String actualValue, String expectedValue){
         if (actualValue.equals(expectedValue)){
             return "\t* " + fieldName + ": '" + actualValue + "' (PASS)";

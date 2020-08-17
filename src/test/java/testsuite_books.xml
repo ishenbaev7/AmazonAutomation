@@ -7,10 +7,4 @@
             <class name="PurchaseOrderTest" />
         </classes>
     </test>
-    <test name="Verify product price on Shopping Cart Review page | THE_HOBBIT" preserve-order="true">
-        <parameter name="testBook" value="THE_HOBBIT"/>
-        <classes>
-            <class name="PurchaseOrderTest" />
-        </classes>
-    </test>
 </suite>

@@ -10,6 +10,8 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.openqa.selenium.By.*;
+
 public abstract class CommonUtils {
 
     private static int timeout = 10;
@@ -84,7 +86,19 @@ public abstract class CommonUtils {
             throw new NoSuchElementException(String.format("The following element did not display: [%s] ", Selector.toString()));
         }
     }
-
+    public List<String> getListOfElementsLinks(By selector) {
+        List<WebElement> elements= selector.findElements((SearchContext) By.tagName("a"));
+        List<String> elementList = new ArrayList<String>();
+        for (WebElement element : elements) {
+            if (element == null) {
+                throw new TestException("Some elements in the list do not exist");
+            }
+            if (element.isDisplayed()) {
+                elementList.add(element.getAttribute("href").trim());
+            }
+        }
+        return elementList;
+    }
     public List<String> getListOfElementTexts(By selector) {
         List<String> elementList = new ArrayList<String>();
         List<WebElement> elements = getElements(selector);

@@ -1,6 +1,6 @@
 package enums;
 
-public enum Products {
+public enum Books {
     HITCHHIKERS_GUIDE("0345391802", "The Hitchhiker's Guide to the Galaxy"),
     THE_HOBBIT("0345339681", "The Hobbit"),
     RINGWORLD("0345333926", "Ringworld"),
@@ -9,7 +9,7 @@ public enum Products {
     private String id;
     private String productTitle;
 
-    Products(String id, String productTitle) {
+    Books(String id, String productTitle) {
         this.id = id;
         this.productTitle = productTitle;
     }

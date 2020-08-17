@@ -1,6 +1,6 @@
 package pages;
 
-import enums.Products;
+import enums.Books;
 import enums.Url;
 import org.openqa.selenium.By;
 import org.testng.TestException;
@@ -14,7 +14,7 @@ public class ProductPage extends CommonUtils {
     private final By PRICE = By.id("price");
     private final By ADD_TO_CART = By.cssSelector("#add-to-cart-button");
 
-    public void navigateToProductPage(Products product){
+    public void navigateToProductPage(Books product){
         String url = Url.BASEURL.getURL() + Url.PRODUCT_SECTION.getURL() + "/" + product.getProductId();
         navigateToURL(url);
         System.out.println("PRODUCT_PAGE: Navigated to " + url);

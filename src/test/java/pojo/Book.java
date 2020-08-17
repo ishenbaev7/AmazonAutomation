@@ -3,13 +3,8 @@ package pojo;
 import org.testng.TestException;
 import pages.ProductPage;
 
-/**
- * Created by tmaher on 12/22/2015.
- */
-public class Book {
-    private String productTitle = "";
+public class Book extends Product {
     private String author = "";
-    private String offerPrice = "";
     private String edition = "";
 
     public Book(){
@@ -18,10 +13,10 @@ public class Book {
     @Override
     public String toString(){
         return String.format(
-                "Product Title:  " + this.productTitle + "\n"
+                "Product Title:  " + super.getProductTitle() + "\n"
                         + "Author: " + this.author + "\n"
                         + "Edition:  " + this.edition + "\n"
-                        + "Offer Price:  " + this.offerPrice + "\n"
+                        + "Offer Price:  " + super.getOfferPrice() + "\n"
         );
     }
 
@@ -33,19 +28,11 @@ public class Book {
             throw new TestException("LOAD INFO ERROR: Product data should only be loaded from product page!\nCurrent URL: " + currentURL);
         } else {
             System.out.println("LOAD_INFO: Loading data...\n");
-            this.productTitle = productPage.getProductTitle();
+            super.setProductTitle(productPage.getProductTitle());
             this.author = productPage.getAuthor();
-            this.offerPrice = productPage.getPrice();
+            super.setOfferPrice(productPage.getPrice());
             this.edition = productPage.getEdition();
         }
-    }
-
-    public String getProductTitle() {
-        return productTitle;
-    }
-
-    public void setProductTitle(String productTitle) {
-        this.productTitle = productTitle;
     }
 
     public String getAuthor() {
@@ -57,11 +44,11 @@ public class Book {
     }
 
     public String getOfferPrice() {
-        return offerPrice;
+        return super.getOfferPrice();
     }
 
     public void setOfferPrice(String offerPrice) {
-        this.offerPrice = offerPrice;
+        super.setOfferPrice(offerPrice);
     }
 
     public String getEdition() {
