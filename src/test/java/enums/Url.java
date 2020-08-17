@@ -1,8 +1,5 @@
 package enums;
 
-/**
- * Created by tmaher on 12/22/2015.
- */
 public enum Url {
     PRODUCT_SECTION("/gp/product"),
     BASEURL("https://www.amazon.com"),
